@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>My Series</title>
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
@@ -380,5 +380,28 @@
                 </section>
             </main>
         </div>
+        <hr />
+        <!-- Aquí empiezo mi Body HTML -->
+        <div class="container">
+            <header class="main-header">
+                <h1 class="main-title">My Series</h1>
+            </header>
+            <main class="main">
+                <section class="series">
+                    <h2 class="section-title">Series list</h2>
+                    <section class="series-pending">
+                        <h3 class="subsection-title">Pending series</h3>
+                        <p class="info">You have 4 series pending to watch</p>
+                    </section>
+                </section>
+
+                <section class="series-watched">
+                    <h3 class="subsection-title">Watched series</h3>
+                    <p class="info">You have watched 4 series</p>
+                </section>
+            </main>
+        </div>
+        <slot class="template"></slot>
+        <script src="./index.js" type="module"></script>
     </body>
 </html>
