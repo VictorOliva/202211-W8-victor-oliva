@@ -1,22 +1,13 @@
 import { SERIES } from '../models/series.js';
-import { Store } from '../storage/storage.js';
 import { Component } from '../component/component.js';
 export class SeriesListPending extends Component {
     selector;
-    storeService;
     series;
     template;
     constructor(selector) {
         super();
         this.selector = selector;
-        this.storeService = new Store('Series');
-        if (this.storeService.getStore().length === 0) {
-            this.series = [...SERIES];
-            this.storeService.setStore(this.series);
-        }
-        else {
-            this.series = this.storeService.getStore();
-        }
+        this.series = [...SERIES];
         this.manageComponent();
     }
     manageComponent() {
