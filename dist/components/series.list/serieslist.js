@@ -13,6 +13,11 @@ export class SeriesListPending extends Component {
     manageComponent() {
         this.template = this.createTemplate();
         this.render(this.selector, this.template);
+        setTimeout(() => {
+            document
+                .querySelectorAll('.icon--delete')
+                .forEach((item) => item.addEventListener('click', this.handlerEraser.bind(this)));
+        }, 100);
     }
     createTemplate() {
         let template = `
@@ -57,6 +62,11 @@ export class SeriesListPending extends Component {
       </section>`;
         return template;
     }
+    handlerEraser(ev) {
+        const deletedSerie = ev.target.id;
+        this.series = this.series.filter((item) => item.id !== +deletedSerie);
+        this.manageComponent();
+    }
 }
 export class SeriesListWatched extends Component {
     selector;
@@ -71,6 +81,11 @@ export class SeriesListWatched extends Component {
     manageComponent() {
         this.templateWatched = this.createTemplateWatched();
         this.renderAdd(this.selector, this.templateWatched);
+        setTimeout(() => {
+            document
+                .querySelectorAll('.icon--delete')
+                .forEach((item) => item.addEventListener('click', this.handlerEraser.bind(this)));
+        }, 100);
     }
     createTemplateWatched() {
         let templateWatched = `
@@ -114,5 +129,10 @@ export class SeriesListWatched extends Component {
     </ul>
       </section>`;
         return templateWatched;
+    }
+    handlerEraser(ev) {
+        const deletedSerie = ev.target.id;
+        this.series = this.series.filter((item) => item.id !== +deletedSerie);
+        this.manageComponent();
     }
 }
