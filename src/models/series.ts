@@ -55,11 +55,9 @@ export const SERIES = [
         name: 'Atypical',
         creator: 'Robia Rashid',
         year: 2017,
-        poster: 'https://www.cine.com/media/series/2711.jpg',
+        poster: 'https://pics.filmaffinity.com/atypical-405052091-large.jpg',
         watched: false,
         score: 0,
         emmies: 0,
     },
-].map((item) => ({ ...item }));
-
-export const initializeTastks = () => SERIES;
+];
