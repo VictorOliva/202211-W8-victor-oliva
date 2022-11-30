@@ -1,5 +1,5 @@
-import { SeriesListPending } from './components/series.list/serieslist.js';
-import { SeriesListWatched } from './components/series.list/serieslist.js';
+import { SeriesListPending } from './mock/serieslist.js';
+import { SeriesListWatched } from './mock/serieslist.js';
 
 (() => {
     new SeriesListPending('.series');

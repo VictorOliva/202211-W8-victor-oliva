@@ -22,8 +22,3 @@ export abstract class Component {
         return true;
     }
 }
-
-export interface IComponent {
-    createTemplate: () => string;
-    manageComponent: () => void;
-}

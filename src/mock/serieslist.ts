@@ -1,12 +1,11 @@
-import { SERIES } from '../../models/series.js';
-import { Component } from '../component/component.js';
+import { ListOfAllSeries, SERIES } from '../models/series.js';
+import { Component } from '../components/component/component.js';
+
 export class SeriesListPending extends Component {
-    selector;
-    series;
-    template;
-    constructor(selector) {
+    series!: Array<ListOfAllSeries>;
+    template!: string;
+    constructor(public selector: string) {
         super();
-        this.selector = selector;
         this.series = [...SERIES];
         this.manageComponent();
     }
@@ -16,16 +15,22 @@ export class SeriesListPending extends Component {
         setTimeout(() => {
             document
                 .querySelectorAll('.icon--delete')
-                .forEach((item) => item.addEventListener('click', this.handlerEraser.bind(this)));
+                .forEach((item) =>
+                    item.addEventListener(
+                        'click',
+                        this.handlerEraser.bind(this)
+                    )
+                );
         }, 100);
     }
+
     createTemplate() {
         let template = `
     <section class="series-pending">
         <h3 class="subsection-title">Pending series</h3>
         <p class="info">You have these series pending to watch</p>
         <ul class="series-list">`;
-        this.series.forEach((item) => {
+        this.series.forEach((item: ListOfAllSeries) => {
             if (!item.watched) {
                 template += `
       <li class="serie">
@@ -62,19 +67,21 @@ export class SeriesListPending extends Component {
       </section>`;
         return template;
     }
-    handlerEraser(ev) {
-        const deletedSerie = ev.target.id;
-        this.series = this.series.filter((item) => item.id !== +deletedSerie);
+
+    handlerEraser(ev: Event) {
+        const deletedSerie = (ev.target as HTMLElement).id;
+        this.series = this.series.filter(
+            (item) => item.id !== +(deletedSerie as string)
+        );
         this.manageComponent();
     }
 }
+
 export class SeriesListWatched extends Component {
-    selector;
-    series;
-    templateWatched;
-    constructor(selector) {
+    series!: Array<ListOfAllSeries>;
+    templateWatched!: string;
+    constructor(public selector: string) {
         super();
-        this.selector = selector;
         this.series = [...SERIES];
         this.manageComponent();
     }
@@ -84,16 +91,22 @@ export class SeriesListWatched extends Component {
         setTimeout(() => {
             document
                 .querySelectorAll('.icon--delete')
-                .forEach((item) => item.addEventListener('click', this.handlerEraser.bind(this)));
+                .forEach((item) =>
+                    item.addEventListener(
+                        'click',
+                        this.handlerEraser.bind(this)
+                    )
+                );
         }, 100);
     }
+
     createTemplateWatched() {
         let templateWatched = `
     <section class="series-watched">
         <h3 class="subsection-title">Watched series</h3>
         <p class="info">You have these series watched</p>
         <ul class="series-list">`;
-        this.series.forEach((item) => {
+        this.series.forEach((item: ListOfAllSeries) => {
             if (item.watched) {
                 templateWatched += `
       <li class="serie">
@@ -130,9 +143,12 @@ export class SeriesListWatched extends Component {
       </section>`;
         return templateWatched;
     }
-    handlerEraser(ev) {
-        const deletedSerie = ev.target.id;
-        this.series = this.series.filter((item) => item.id !== +deletedSerie);
+
+    handlerEraser(ev: Event) {
+        const deletedSerie = (ev.target as HTMLElement).id;
+        this.series = this.series.filter(
+            (item) => item.id !== +(deletedSerie as string)
+        );
         this.manageComponent();
     }
 }
